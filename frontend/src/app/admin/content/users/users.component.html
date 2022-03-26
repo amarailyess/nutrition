@@ -1,0 +1,39 @@
+<div class="col-md-12">
+          <div class="card" >
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Users List</h4>
+              <p *ngIf="usersList.length!=0" class="card-category"> ({{usersList.length}}) Totally Users</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+              	<div *ngIf="usersList.length==0" class="alert alert-warning">No users found</div>
+                <table *ngIf="usersList.length!=0"class="table">               
+                  <thead class=" text-primary">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th style="position: relative;left: -10px;">Age</th>
+                  </thead>            
+                  <tbody>  
+                    <tr *ngFor="let user of usersList">
+                      <td>{{user.id}}</td>
+                      <td>{{user.nom}}</td>
+                      <td>{{user.prenom}}</td>
+                      <td>{{user.adresse}}</td>
+                      <td class="text-primary" >{{user.age}}</td>
+                      <td class="td-actions text-right">
+                          <button type="button"   class="btn btn-primary btn-link btn-sm"><a (click)="changeUserType()"  routerLink="/admin/profile">
+                            <i class="material-icons">visibility</i></a>
+                          </button>
+                          <button type="button" (click)="delete(user)"   class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                      </td> 
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>

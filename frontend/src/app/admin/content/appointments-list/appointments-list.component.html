@@ -1,0 +1,42 @@
+<div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Appointments List</h4>
+              <p *ngIf="appointmentList.length!=0" class="card-category"> ({{appointmentList.length}}) Totally Appointments</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div *ngIf="appointmentList.length==0" class="alert alert-warning">No appointment found</div>
+                <table *ngIf="appointmentList.length!=0" class="table">              
+                  <thead class=" text-primary">
+                    <th>ID</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Date</th>
+                    <th id="work_adress">Adress</th>
+                    <th>Done</th>
+                  </thead>           
+                  <tbody>                  
+                    <tr *ngFor="let appointment of appointmentList">                  
+                      <td>{{appointment.id}}</td>
+                      <td>{{appointment.patientName}}</td>
+                      <td>{{appointment.doctorName}}</td>
+                      <td>{{appointment.date}}</td>
+                      <td class="text-primary">{{appointment.adress}}</td>
+                      <td><i *ngIf="appointment.done.match('yes')"  class="fa fa-check text-success"></i>
+                      </td>
+                      <td class="td-actions text-right">
+                          <button type="button"   class="btn btn-primary btn-link btn-sm"><a routerLink="/admin/appointment">
+                            <i class="material-icons">visibility</i></a>
+                          </button>
+                          <button type="button" (click)="delete(appointment)"  class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>      
+                    </tr>                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>

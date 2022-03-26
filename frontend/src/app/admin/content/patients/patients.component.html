@@ -1,0 +1,42 @@
+<div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Patients List</h4>
+              <p *ngIf="patientList.length!=0" class="card-category"> ({{patientList.length}}) Totally patients</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div *ngIf="patientList.length==0"  class="alert alert-warning">No patient found</div>
+                <table *ngIf="patientList.length!=0" class="table">
+                  
+                  <thead class=" text-primary">
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th style="position: relative;left: -10px;">Appointment ID</th>
+                  </thead>
+                  <tbody>                  
+                    <tr *ngFor="let patient of patientList">
+                      <td>{{patient.id}}</td>
+                      <td>{{patient.name}}</td>
+                      <td>{{patient.country}}</td>
+                      <td>{{patient.city}}</td>
+                      <td class="text-primary" >{{patient.appointmentId}}</td>
+                      <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="View Appointment" class="btn btn-primary btn-link btn-sm"><a  routerLink="/admin/appointment">
+                            <i class="material-icons">visibility</i></a>
+                          </button>
+                          <button type="button" (click)="delete(patient)" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                      </td>         
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+

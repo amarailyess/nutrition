@@ -1,0 +1,39 @@
+<div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Doctors List</h4>
+              <p *ngIf="doctorList.length!=0" class="card-category"> ({{doctorList.length}}) Totally Doctors</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div *ngIf="doctorList.length==0" class="alert alert-warning">No doctor found</div>
+                <table *ngIf="doctorList.length!=0" class="table">                 
+                  <thead class=" text-primary">
+                    <th>ID </th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Specialty</th>
+                    <th id="work_adress">Work Adress</th>
+                  </thead>
+                  <tbody>                  
+                    <tr *ngFor="let doctor of doctorList">                     
+                      <td>{{doctor.id}}</td>
+                      <td>{{doctor.name}}</td>
+                      <td>{{doctor.country}}</td>
+                      <td>{{doctor.specialty}}</td>
+                      <td class="text-primary">{{doctor.work_adress}}</td>
+                      <td class="td-actions text-right">
+                          <button type="button"   class="btn btn-primary btn-link btn-sm"><a (click)="changeUserType()"  routerLink="/admin/profile">
+                            <i class="material-icons">visibility</i></a>
+                          </button>
+                          <button type="button" (click)="delete(doctor)"  class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>       
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>

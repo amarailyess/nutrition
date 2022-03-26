@@ -1,0 +1,42 @@
+ 
+  <div class="card">
+    <div class="card-header card-header-primary">
+
+      <h3 class="card-title">Notifications</h3>
+    <p *ngIf="notificationList.length!=0" class="card-category"> ({{notificationList.length}}) Totally Notifications</p>
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+                        <div *ngIf="notificationList.length==0" class="alert alert-warning">No notification found</div>
+
+                <table *ngIf="notificationList.length!=0" class="table">
+                  
+                  <thead class=" text-primary">
+
+                    <th>Number</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                     <th id="work_adress">Content</th>
+                  </thead>          
+                  <tbody>                   
+                    <tr *ngFor="let notification of notificationList">                   
+                      <td>{{notification.number}}</td>
+                      <td>{{notification.type}}</td>
+                      <td>{{notification.date}}</td>
+                      <td>{{notification.time}}</td>                     
+                      <td class="text-primary">{{notification.content}}</td>
+                      <td class="td-actions text-right">                         
+                          <button type="button" (click)="delete(notification)"  class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>                       
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+    </div>
+    
+  </div>
+ 

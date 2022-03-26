@@ -1,0 +1,39 @@
+<div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Articles List</h4>
+              <p *ngIf="articleList.length!=0" class="card-category"> ({{articleList.length}}) Totally Articles</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div *ngIf="articleList.length==0" class="alert alert-warning">No article found</div>
+                <table *ngIf="articleList.length!=0" class="table">                 
+                  <thead class=" text-primary">
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Domain</th>
+                    <th>Doctor Name</th>
+                    <th id="work_adress">Date</th>
+                  </thead>           
+                  <tbody>                   
+                    <tr *ngFor="let article of articleList">                   
+                      <td>{{article.id}}</td>
+                      <td>{{article.title}}</td>
+                      <td>{{article.domain}}</td>
+                      <td>{{article.doctorName}}</td>
+                      <td class="text-primary">{{article.date}}</td>
+                      <td class="td-actions text-right">
+                          <button type="button"   class="btn btn-primary btn-link btn-sm"><a routerLink="/admin/article">
+                            <i class="material-icons">visibility</i></a>
+                          </button>
+                          <button type="button" (click)="delete(article)"  class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>          
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
